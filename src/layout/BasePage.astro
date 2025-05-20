@@ -1,0 +1,95 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
+import "../styles/dark.css";
+import "../styles/light.css";
+import DarkModeIcon from "../../public/icons/darkmode.svg";
+
+import "@fontsource/outfit";
+import "@fontsource/dm-serif-display";
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>samuel's portfolio</title>
+		<ClientRouter />
+		<script is:inline>
+			/**
+			 * Returns true if the theme is dark and light otherwise.
+			 */
+			function getTheme() {
+				const themeOverride = localStorage?.getItem("theme");
+				if (themeOverride === null) {
+					return window.matchMedia("(prefers-color-scheme: dark)").matches;
+				} else {
+					return themeOverride === "true";
+				}
+			}
+
+			function applyTheme() {
+				if (getTheme()) {
+					document.querySelector("body")?.classList.remove("light");
+					document.querySelector("body")?.classList.add("dark");
+				} else {
+					document.querySelector("body")?.classList.remove("dark");
+					document.querySelector("body")?.classList.add("light");
+				}
+			}
+
+			/**
+			 * Toggles between light and dark modes by overriding
+			 * browser preferences with a cookie value.
+			 */
+			function toggleTheme() {
+				const themeOverride = localStorage?.getItem("theme");
+				const preferredTheme = window.matchMedia(
+					"(prefers-color-scheme: dark)",
+				).matches;
+				if (themeOverride === null) {
+					localStorage.setItem("theme", !preferredTheme);
+				} else {
+					localStorage.setItem("theme", !(themeOverride === "true"));
+				}
+				console.log("help");
+				applyTheme();
+			}
+		</script></head
+	>
+
+	<body
+		class="bg-[var(--md-sys-color-surface)] text-[var(--md-sys-color-on-surface)]"
+	>
+		<slot />
+		<script>
+			import "@material/web/switch/switch";
+		</script>
+		<div class="absolute bottom-2 right-2">
+			<label
+				class="flex flex-row items-center gap-3 p-3 bg-[var(--md-sys-color-surface-container-high)] text-[var(--md-sys-color-on-surface-container-high)] rounded-full"
+			>
+				<DarkModeIcon fill="currentColor" />
+				Dark Mode
+				<md-switch id="theme-switch"></md-switch>
+				<script is:inline>
+					function setupThemeSwitch() {
+						const themeSwitch = document.querySelector("#theme-switch");
+						themeSwitch.selected = getTheme();
+						themeSwitch.addEventListener("change", toggleTheme);
+					}
+
+					setupThemeSwitch();
+				</script>
+			</label>
+		</div>
+	</body><script is:inline>
+		applyTheme();
+		document.addEventListener("astro:after-swap", () => {
+			applyTheme();
+			setupThemeSwitch();
+		});
+	</script>
+</html>

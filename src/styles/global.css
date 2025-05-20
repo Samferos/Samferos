@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@theme {
+	--font-display: "DM Serif Display";
+	--font-sans: "Outfit";
+}
+
+:root {
+	--md-ref-typeface-brand: 'DM Serif Display';
+	--md-ref-typeface-plain: 'Outfit';
+}

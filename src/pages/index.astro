@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import Bar from "../components/Bar.astro";
+import BasePage from "../layout/BasePage.astro";
+import Container from "../layout/Container.astro";
+import Logo from "../../public/favicon.svg";
+import Box from "../components/Box.astro";
+---
+
+<BasePage>
+	<script>
+		import "@material/web/button/filled-button";
+	</script>
+	<Container>
+		<Bar>
+			<div slot="align-start" class="flex flex-row items-center gap-3 text-xl">
+				<Image src={Logo} loading="eager" alt="" width="64" height="64" />
+				<div
+					class="text-start p-2 bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)] rounded-t-2xl rounded-r-2xl"
+				>
+					<p>salut</p>
+					<p>moi c'est samuel</p>
+				</div>
+			</div>
+			<div slot="align-end" class="flex flex-row items-center gap-3">
+				<md-filled-button class="px-4">Contact</md-filled-button>
+			</div>
+		</Bar>
+		<Box>
+			<h1 class="font-display">Introduction</h1>
+			<p>je suis un étudiant en informatique</p>
+		</Box>
+	</Container>
+</BasePage>

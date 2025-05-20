@@ -1,0 +1,13 @@
+<div
+	class="grid grid-cols-3 items-center gap-2 m-4 p-4 rounded-xl bg-[var(--md-sys-color-surface-container)] text-[var(--md-sys-color-on-surface-container)]"
+>
+	<div>
+		<slot name="align-start" />
+	</div>
+	<div class="text-center justify-self-center">
+		<slot />
+	</div>
+	<div class="text-end justify-self-end">
+		<slot name="align-end" />
+	</div>
+</div>
