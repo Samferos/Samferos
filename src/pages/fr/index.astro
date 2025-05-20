@@ -1,0 +1,30 @@
+---
+import BasePage from "../../layout/BasePage.astro";
+import Container from "../../layout/Container.astro";
+import Box from "../../components/Box.astro";
+import Homebar from "../../components/Homebar.astro";
+---
+
+<BasePage>
+	<Container>
+		<Homebar>
+			<div slot="greeting">
+				<p>salut</p>
+				<p>moi c'est samuel</p>
+			</div>
+		</Homebar>
+		<Box>
+			<h1 class="font-display text-4xl">Introduction</h1>
+			<p>
+				je suis un étudiant en informatique qui s'intéresse aux systèmes de
+				bas-niveaux et a des intérêts en arts et musique.
+			</p>
+			<b>choses que j'aime bien :</b>
+			<ul class="list-disc list-inside">
+				<li>programmer des choses (vraiment, tout et n'importe quoi)</li>
+				<li>dessiner (digital & traditionnel)</li>
+				<li>écouter et jouer de la musique (guitare & piano)</li>
+			</ul>
+		</Box>
+	</Container>
+</BasePage>

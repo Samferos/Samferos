@@ -5,14 +5,14 @@ import "../styles/dark.css";
 import "../styles/light.css";
 import DarkModeIcon from "../../public/icons/darkmode.svg";
 
-import "@fontsource/outfit";
+import "@fontsource-variable/outfit";
 import "@fontsource/dm-serif-display";
 ---
 
-<html lang="en">
+<html lang={Astro.currentLocale}>
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>samuel's portfolio</title>
@@ -54,7 +54,6 @@ import "@fontsource/dm-serif-display";
 				} else {
 					localStorage.setItem("theme", !(themeOverride === "true"));
 				}
-				console.log("help");
 				applyTheme();
 			}
 		</script></head
@@ -69,11 +68,15 @@ import "@fontsource/dm-serif-display";
 		</script>
 		<div class="absolute bottom-2 right-2">
 			<label
-				class="flex flex-row items-center gap-3 p-3 bg-[var(--md-sys-color-surface-container-high)] text-[var(--md-sys-color-on-surface-container-high)] rounded-full"
+				class="flex flex-row items-center gap-3 p-3 bg-[var(--md-sys-color-surface-container-high)] text-[var(--md-sys-color-on-surface-container-high)] rounded-full shadow-md"
 			>
-				<DarkModeIcon fill="currentColor" />
-				Dark Mode
-				<md-switch id="theme-switch"></md-switch>
+				<p>
+					<DarkModeIcon class="inline" fill="currentColor" />
+					Dark Mode
+				</p>
+				<form action="#">
+					<md-switch id="theme-switch"></md-switch>
+				</form>
 				<script is:inline>
 					function setupThemeSwitch() {
 						const themeSwitch = document.querySelector("#theme-switch");

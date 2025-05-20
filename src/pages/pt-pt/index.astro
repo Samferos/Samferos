@@ -1,0 +1,35 @@
+---
+import BasePage from "../../layout/BasePage.astro";
+import Container from "../../layout/Container.astro";
+import Box from "../../components/Box.astro";
+import Homebar from "../../components/Homebar.astro";
+---
+
+<BasePage>
+	<Container>
+		<Homebar>
+			<div slot="greeting">
+				<p>olá</p>
+				<p>eu sou samuel</p>
+			</div>
+		</Homebar>
+		<Box>
+			<h1 class="font-display text-4xl">Introdução</h1>
+			<p>
+				sou um aluno em informatica que gosta dos sistemas baixo niveis que tem
+				interesses em artes e musica.
+			</p>
+			<p class="text-[var(--md-sys-color-on-surface-variant)] text-sm">
+				eu acho que escrever este texto em português com um teclado francês vai
+				me fazer chorar <br />
+				<span class="text-xs">aonde é que estam os meu acentos ;-;</span>
+			</p>
+			<b>coisas que eu gosto :</b>
+			<ul class="list-disc list-inside">
+				<li>programar coisas (a sério, qualquer coisa)</li>
+				<li>desenhar (digital & traditional)</li>
+				<li>escutar e jogar musica (guitarra & piano)</li>
+			</ul>
+		</Box>
+	</Container>
+</BasePage>

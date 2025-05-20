@@ -1,35 +1,30 @@
 ---
-import { Image } from "astro:assets";
-import Bar from "../components/Bar.astro";
 import BasePage from "../layout/BasePage.astro";
 import Container from "../layout/Container.astro";
-import Logo from "../../public/favicon.svg";
 import Box from "../components/Box.astro";
+import Homebar from "../components/Homebar.astro";
 ---
 
 <BasePage>
-	<script>
-		import "@material/web/button/filled-button";
-	</script>
 	<Container>
-		<Bar>
-			<div slot="align-start" class="flex flex-row items-center gap-3 text-xl">
-				<Image src={Logo} loading="eager" alt="" width="64" height="64" />
-				<div
-					class="text-start p-2 bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)] rounded-t-2xl rounded-r-2xl"
-				>
-					<p>salut</p>
-					<p>moi c'est samuel</p>
-				</div>
+		<Homebar>
+			<div slot="greeting">
+				<p>hi</p>
+				<p>i'm samuel</p>
 			</div>
-			<div slot="align-end" class="flex flex-row items-center gap-3">
-				<md-filled-button class="px-4">ichika</md-filled-button>
-				<md-filled-button class="px-4">ichika</md-filled-button>
-			</div>
-		</Bar>
+		</Homebar>
 		<Box>
 			<h1 class="font-display text-4xl">Introduction</h1>
-			<p>je suis un étudiant en informatique</p>
+			<p>
+				i'm a student in computer science likes to play around with low level
+				systems, and has interests in art and music.
+			</p>
+			<b>things i like :</b>
+			<ul class="list-disc list-inside">
+				<li>programming stuff (really, any kind of stuff)</li>
+				<li>drawing (digital & traditional)</li>
+				<li>listening and playing music (guitar & piano)</li>
+			</ul>
 		</Box>
 	</Container>
 </BasePage>

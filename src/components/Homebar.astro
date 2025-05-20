@@ -1,0 +1,61 @@
+---
+import Bar from "./Bar.astro";
+import { Image } from "astro:assets";
+import Logo from "../../public/favicon.svg";
+import LanguageIcon from "../../public/icons/language.svg";
+import astroConfig from "../../astro.config.mjs";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const locales = astroConfig.i18n?.locales ?? [];
+---
+
+<script>
+	import "@material/web/button/filled-button";
+	import "@material/web/menu/menu";
+	import "@material/web/menu/menu-item";
+</script>
+<Bar>
+	<div slot="align-start" class="flex flex-row items-center gap-3 text-xl">
+		<Image src={Logo} loading="eager" alt="" width="64" height="64" />
+		<div
+			class="text-start p-2 bg-[var(--md-sys-color-primary)] text-[var(--md-sys-color-on-primary)] rounded-t-2xl rounded-r-2xl"
+		>
+			<slot name="greeting" />
+		</div>
+	</div>
+	<div slot="align-end" class="flex flex-row items-center gap-3">
+		<div class="relative">
+			<md-filled-button id="language-button" class="px-4">
+				<div class="flex flex-row gap-2 items-center">
+					<LanguageIcon fill="currentColor" class="inline" />
+					<b>{Astro.currentLocale?.toUpperCase()}</b>
+				</div>
+			</md-filled-button>
+			<md-filled-button class="px-4" href="/nothingness">
+				go into the abyss
+			</md-filled-button>
+			<md-menu id="language-menu" anchor="language-button">
+				{
+					locales.map((lang) => {
+						return (
+							<md-menu-item href={getRelativeLocaleUrl(lang)}>
+								<div slot="headline">{lang.toUpperCase()}</div>
+							</md-menu-item>
+						);
+					})
+				}
+			</md-menu>
+		</div>
+
+		<script is:inline>
+			document.addEventListener("astro:page-load", () => {
+				const anchor = document.querySelector("#language-button");
+				const menu = document.querySelector("#language-menu");
+
+				anchor.addEventListener("click", () => {
+					menu.open = !menu.open;
+				});
+			});
+		</script>
+	</div>
+</Bar>

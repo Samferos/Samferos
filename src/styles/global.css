@@ -9,3 +9,19 @@
 	--md-ref-typeface-brand: 'DM Serif Display';
 	--md-ref-typeface-plain: 'Outfit';
 }
+
+.ichika {
+	animation: slide-in 400ms ease-out 0ms 1 normal;
+}
+
+@keyframes slide-in {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
