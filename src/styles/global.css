@@ -2,12 +2,12 @@
 
 @theme {
 	--font-display: "DM Serif Display";
-	--font-sans: "Outfit";
+	--font-sans: "Outfit Variable";
 }
 
 :root {
 	--md-ref-typeface-brand: 'DM Serif Display';
-	--md-ref-typeface-plain: 'Outfit';
+	--md-ref-typeface-plain: 'Outfit Variable';
 }
 
 .ichika {
