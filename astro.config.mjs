@@ -12,5 +12,6 @@ export default defineConfig({
     locales: ["fr", "en", "pt-pt"],
     defaultLocale: "en",
   },
-  site: "https://samferos.github.io/Samferos"
+  site: "https://samferos.github.io",
+  base: "Samferos",
 });
