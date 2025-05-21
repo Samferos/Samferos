@@ -1,0 +1,47 @@
+---
+import Box from "../components/Box.astro";
+import BasePage from "../layout/BasePage.astro";
+import Container from "../layout/Container.astro";
+
+import { getCollection } from "astro:content";
+
+import BackIcon from "../../public/icons/arrow_back.svg";
+
+const projects = await getCollection("projects");
+---
+
+<BasePage>
+	<script>
+		import "@material/web/iconbutton/icon-button";
+		import "@material/web/button/filled-button";
+		import "@material/web/chips/filter-chip";
+	</script>
+	<Container>
+		<div class="m-4 flex flex-col gap-4">
+			<div class="m-4">
+				<md-icon-button href=".."
+					><BackIcon fill="currentColor" /></md-icon-button
+				>
+				<h1 class="text-5xl font-display mt-4">Projects</h1>
+			</div>
+			{
+				projects.map((value) => {
+					return (
+						<Box>
+							<div class="flex flex-row items-end gap-2">
+								<h1 class="text-3xl font-display">{value.data.title}</h1>
+								<div class="p-1 px-3 bg-[var(--md-sys-color-surface-container-highest)] rounded-full">
+									<p>{value.data.status}</p>
+								</div>
+							</div>
+							<p>{value.data.description}</p>
+							<md-filled-button href={value.id + "/"} class="px-4 mt-4">
+								check it out
+							</md-filled-button>
+						</Box>
+					);
+				})
+			}
+		</div>
+	</Container>
+</BasePage>

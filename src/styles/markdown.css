@@ -1,0 +1,9 @@
+h1 {
+	font-size: 4em;
+	font-family: "DM Serif Display";
+}
+
+a {
+	text-decoration: underline;
+	color: var(--md-sys-color-primary);
+}

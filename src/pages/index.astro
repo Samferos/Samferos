@@ -6,25 +6,43 @@ import Homebar from "../components/Homebar.astro";
 ---
 
 <BasePage>
+	<script>
+		import "@material/web/button/filled-button";
+	</script>
 	<Container>
-		<Homebar>
-			<div slot="greeting">
-				<p>hi</p>
-				<p>i'm samuel</p>
-			</div>
-		</Homebar>
-		<Box>
-			<h1 class="font-display text-4xl">Introduction</h1>
-			<p>
-				i'm a student in computer science likes low level systems, and has
-				interests in art and music.
-			</p>
-			<b>things i like :</b>
-			<ul class="list-disc list-inside">
-				<li>programming stuff (really, any kind of stuff)</li>
-				<li>drawing (digital & traditional)</li>
-				<li>listening and playing music (guitar & piano)</li>
-			</ul>
-		</Box>
+		<div class="m-4">
+			<Homebar>
+				<div slot="greeting">
+					<p>hi</p>
+					<p>i'm samuel</p>
+				</div>
+			</Homebar>
+		</div>
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mx-4">
+			<Box>
+				<h1 class="font-display text-4xl mb-2">Introduction</h1>
+				<p>
+					i'm a student in computer science interested in low level systems and
+					has interests in art and music.
+				</p>
+				<b>things i like :</b>
+				<ul class="list-disc list-inside">
+					<li>programming</li>
+					<li>drawing (digital & traditional)</li>
+					<li>listening and playing music (guitar & piano)</li>
+				</ul>
+			</Box>
+			<Box>
+				<div class="flex flex-col justify-between h-full">
+					<div>
+						<h1 class="font-display text-4xl mb-2">Projects</h1>
+						<p>here are some projects I either have done, or want to do.</p>
+					</div>
+					<md-filled-button class="px-4 mt-auto w-fit" href="projects/"
+						>check it out</md-filled-button
+					>
+				</div>
+			</Box>
+		</div>
 	</Container>
 </BasePage>

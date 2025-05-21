@@ -11,7 +11,9 @@ export default defineConfig({
   i18n: {
     locales: ["fr", "en", "pt-pt"],
     defaultLocale: "en",
+    fallback: { "fr": "en", "pt-pt": "en" }
   },
   site: "https://samferos.github.io",
   base: "Samferos",
+  trailingSlash: "always"
 });

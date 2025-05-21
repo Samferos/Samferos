@@ -1,0 +1,26 @@
+---
+import BasePage from "./BasePage.astro";
+import Container from "./Container.astro";
+
+import BackIcon from "../../public/icons/arrow_back.svg";
+
+const { title } = Astro.props;
+
+import "../styles/markdown.css";
+---
+
+<BasePage>
+	<script>
+		import "@material/web/iconbutton/icon-button";
+	</script>
+	<Container>
+		<div class="m-4 inline-block">
+			<div class="m-4">
+				<md-icon-button href=".."
+					><BackIcon fill="currentColor" /></md-icon-button
+				>
+			</div>
+			<slot />
+		</div>
+	</Container>
+</BasePage>

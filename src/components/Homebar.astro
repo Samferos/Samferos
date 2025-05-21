@@ -3,6 +3,7 @@ import Bar from "./Bar.astro";
 import { Image } from "astro:assets";
 import Logo from "../../public/favicon.svg";
 import LanguageIcon from "../../public/icons/language.svg";
+import GithubIcon from "../../public/icons/github-mark.svg";
 import astroConfig from "../../astro.config.mjs";
 import { getRelativeLocaleUrl } from "astro:i18n";
 
@@ -24,12 +25,14 @@ const locales = astroConfig.i18n?.locales ?? [];
 		</div>
 	</div>
 	<div slot="align-end" class="flex flex-row items-center gap-3">
+		<md-filled-button class="px-4" href="https://github.com/Samferos">
+			<GithubIcon slot="icon" fill="currentColor" />
+			<p>Github</p>
+		</md-filled-button>
 		<div class="relative">
 			<md-filled-button id="language-button" class="px-4">
-				<div class="flex flex-row gap-2 items-center">
-					<LanguageIcon fill="currentColor" class="inline" />
-					<b>{Astro.currentLocale?.toUpperCase()}</b>
-				</div>
+				<LanguageIcon slot="icon" fill="currentColor" class="inline" />
+				<b>{Astro.currentLocale?.toUpperCase()}</b>
 			</md-filled-button>
 			<md-menu id="language-menu" anchor="language-button">
 				{
@@ -43,9 +46,6 @@ const locales = astroConfig.i18n?.locales ?? [];
 				}
 			</md-menu>
 		</div>
-		<md-filled-button class="px-4" href="nothingness">
-			go into the abyss
-		</md-filled-button>
 
 		<script is:inline>
 			document.addEventListener("astro:page-load", () => {
