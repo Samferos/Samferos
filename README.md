@@ -1,4 +1,4 @@
-### hey there.
+### hi.
 ### my name is samuel, i'm a student in computer science.
 
 #### things i like ✨
